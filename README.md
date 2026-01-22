@@ -20,26 +20,11 @@ Hyrlance is a modern, responsive landing page that collects waitlist signups and
 - **Vite** (dev server, build, preview)
 - **Lucide React** (icons)
 
-## Run locally
+## Waitlist flow
 
-**Prerequisites:** Node.js (LTS recommended)
+- Submissions are captured via a simple email form with validation and clear success/error states.
+- On successful signup, the page updates instantly (counter increments and a new “recent user” initial appears).
 
-```bash
-npm install
-npm run dev
-```
+## Notes
 
-Vite will print the local URL in the terminal (typically `http://localhost:3000/`).
-
-## Build & preview
-
-```bash
-npm run build
-npm run preview
-```
-
-## Waitlist form (email delivery)
-
-The waitlist form submits to **FormSubmit** using an email endpoint configured in `components/WaitlistForm.tsx`.
-
-- If you want signups to go to a different inbox, update the email address in that file.
+- The waitlist form submits via **FormSubmit** (endpoint configured in `components/WaitlistForm.tsx`).
