@@ -57,9 +57,9 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onJoin }) => {
 
   if (status === 'success') {
     return (
-      <div className="w-full bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3 animate-fade-in-up">
-        <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 text-green-600">
-          <Sparkles size={20} />
+      <div className="w-full bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200/60 rounded-2xl p-5 flex items-center gap-4 animate-fade-in-up shadow-sm">
+        <div className="w-11 h-11 rounded-full bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center flex-shrink-0 text-green-600 shadow-sm">
+          <Sparkles size={20} strokeWidth={2.5} />
         </div>
         <div>
           <h3 className="font-semibold text-green-800 text-sm">You're on the list!</h3>
