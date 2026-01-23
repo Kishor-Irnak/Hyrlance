@@ -6,5 +6,5 @@ export default defineConfig({
   build: {
     outDir: "dist",
   },
-  base: "/Hyrlance/",
+  base: "/",
 });
