@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export interface RecentUser {
   initial: string;
@@ -6,7 +6,7 @@ export interface RecentUser {
 }
 
 interface UserCounterProps {
-  count: number;
+  count: number | null;
   users: RecentUser[];
 }
 
@@ -15,13 +15,13 @@ export const UserCounter: React.FC<UserCounterProps> = ({ count, users }) => {
     <div className="flex items-center gap-4 mt-2">
       <div className="flex -space-x-3">
         {users.map((user, i) => (
-          <div 
-            key={i} 
+          <div
+            key={i}
             className={`w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-white shadow-sm transition-all duration-500 animate-fade-in-up ${user.color}`}
             title={`User starting with ${user.initial}`}
             style={{ animationDelay: `${i * 100}ms` }}
           >
-             {user.initial}
+            {user.initial}
           </div>
         ))}
         <div className="w-9 h-9 rounded-full border-2 border-white bg-gray-50 flex items-center justify-center text-[10px] font-bold text-gray-500 shadow-sm z-10">
@@ -30,14 +30,20 @@ export const UserCounter: React.FC<UserCounterProps> = ({ count, users }) => {
       </div>
       <div className="flex flex-col">
         <div className="flex items-baseline gap-1">
-            <span className="font-bold text-brand-navy text-lg tabular-nums transition-all duration-500">
-                {count.toLocaleString()}
-            </span>
-            <span className="text-gray-500 text-sm">makers waiting</span>
+          <span className="font-bold text-brand-navy text-lg tabular-nums transition-all duration-500 min-w-[2ch]">
+            {count !== null ? (
+              count.toLocaleString()
+            ) : (
+              <span className="inline-block w-8 h-5 bg-gray-200 animate-pulse rounded translate-y-0.5"></span>
+            )}
+          </span>
+          <span className="text-gray-500 text-sm">makers waiting</span>
         </div>
         <div className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-[10px] uppercase font-semibold text-gray-400 tracking-wide">Live</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+          <span className="text-[10px] uppercase font-semibold text-gray-400 tracking-wide">
+            Live
+          </span>
         </div>
       </div>
     </div>

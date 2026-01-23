@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Loader2, Sparkles, Send } from 'lucide-react';
+import { database } from '../lib/firebase';
+import { ref, runTransaction } from 'firebase/database';
 
 interface WaitlistFormProps {
   onJoin: (email: string) => void;
@@ -41,6 +43,17 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onJoin }) => {
       });
 
       if (response.ok) {
+        // Increment the waitlist count in Firebase
+        try {
+          const countRef = ref(database, 'waitlistCount');
+          await runTransaction(countRef, (currentCount) => {
+            return (currentCount || 0) + 1;
+          });
+        } catch (firebaseError) {
+          console.error('Firebase error:', firebaseError);
+          // Continue even if Firebase update fails
+        }
+        
         setStatus('success');
         onJoin(email); // Pass the email back to update UI instantly
         setEmail('');
