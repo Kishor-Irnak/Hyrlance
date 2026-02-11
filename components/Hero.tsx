@@ -44,8 +44,6 @@ export const Hero: React.FC = () => {
   }, []);
 
   const handleUserJoined = (email: string) => {
-    setWaitingCount((prev) => (prev || 0) + 1);
-
     // Extract first letter of email or name part
     const initial = email.charAt(0).toUpperCase();
 
